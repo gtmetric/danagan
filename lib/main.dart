@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MaterialApp(
-//     initialRoute: '/',
-//     routes: {
-//       '/': (context) => Loading(),
-//       '/home': (context) => Home(),
-//       '/location': (context) => ChooseLocation(),
-//     },
-//   ));
-// }
-
 void main() => runApp(MyApp());
 
-/// This is the main application widget.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,7 +11,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
 
@@ -31,7 +18,6 @@ class MyStatefulWidget extends StatefulWidget {
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
-/// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
 
@@ -108,8 +94,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         width: 140,
                         height: 130,
                         child: Container(
+                          width: 140,
+                          height: 120,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Color(0xffd2d2d2),
+                              width: 5,
+                            ),
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0x19000000),
@@ -261,7 +253,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   SizedBox(height: 20),
