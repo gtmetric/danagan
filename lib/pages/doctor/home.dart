@@ -1,0 +1,465 @@
+import 'package:flutter/material.dart';
+import 'package:term_project/navbar.dart';
+import 'package:term_project/services/auth.dart';
+
+class DoctorHome extends StatefulWidget {
+  DoctorHome({Key key}) : super(key: key);
+
+  @override
+  _DoctorHomeState createState() => _DoctorHomeState();
+}
+
+class _DoctorHomeState extends State<DoctorHome> {
+  NavBar myNavBar = NavBar();
+  final AuthService _auth = AuthService();
+
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
+        toolbarHeight: 25,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(25),
+          ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image(
+              image: AssetImage('assets/icons/people_icon.png'),
+              width: 280,
+              height: 180,
+            ),
+            RaisedButton(
+              color: Color.fromRGBO(240, 136, 136, 0.8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+              onPressed: () async {
+                // _onItemTapped(2);
+                await _auth.signOut();
+              },
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(0.0),
+              child: Container(
+                padding:
+                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
+                child: Container(
+                  width: 155,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('+ ',
+                          style: TextStyle(
+                              fontSize: 36, fontWeight: FontWeight.bold)),
+                      Text(
+                        "REQUEST",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontFamily: "Ubuntu",
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 140,
+                        height: 130,
+                        child: Container(
+                          width: 140,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Color(0xffd2d2d2),
+                              width: 5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x19000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                            color: Color(0xffd2d2d2),
+                          ),
+                          padding: const EdgeInsets.only(
+                            top: 20,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "REGISTERED",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: "Ubuntu",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(height: 19),
+                              Container(
+                                width: 140,
+                                height: 60,
+                                child: Container(
+                                  width: 140,
+                                  height: 51,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: Color.fromRGBO(142, 2, 2, 1),
+                                      width: 5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x19000000),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    color: Color.fromRGBO(142, 2, 2, 1),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 11,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "126,440",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 26,
+                                        fontFamily: "Ubuntu",
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 140,
+                        height: 130,
+                        child: Container(
+                          width: 140,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Color(0xffd2d2d2),
+                              width: 5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x19000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                            color: Color(0xffd2d2d2),
+                          ),
+                          padding: const EdgeInsets.only(
+                            top: 20,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "DONATED",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: "Ubuntu",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(height: 19),
+                              Container(
+                                width: 140,
+                                height: 60,
+                                child: Container(
+                                  width: 140,
+                                  height: 51,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: Color.fromRGBO(142, 2, 2, 1),
+                                      width: 5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x19000000),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    color: Color.fromRGBO(142, 2, 2, 1),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 11,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "315",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 26,
+                                        fontFamily: "Ubuntu",
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 140,
+                        height: 130,
+                        child: Container(
+                          width: 140,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Color(0xffd2d2d2),
+                              width: 5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x19000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                            color: Color(0xffd2d2d2),
+                          ),
+                          padding: const EdgeInsets.only(
+                            top: 20,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "SAVED",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: "Ubuntu",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(height: 19),
+                              Container(
+                                width: 140,
+                                height: 60,
+                                child: Container(
+                                  width: 140,
+                                  height: 51,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: Color.fromRGBO(142, 2, 2, 1),
+                                      width: 5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x19000000),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    color: Color.fromRGBO(142, 2, 2, 1),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 11,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "697",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 26,
+                                        fontFamily: "Ubuntu",
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 140,
+                        height: 130,
+                        child: Container(
+                          width: 140,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Color(0xffd2d2d2),
+                              width: 5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x19000000),
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
+                              ),
+                            ],
+                            color: Color(0xffd2d2d2),
+                          ),
+                          padding: const EdgeInsets.only(
+                            top: 12,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "WAITING FOR\nDONATION",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: "Ubuntu",
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(height: 6),
+                              Container(
+                                width: 140,
+                                height: 60,
+                                child: Container(
+                                  width: 140,
+                                  height: 51,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: Color.fromRGBO(142, 2, 2, 1),
+                                      width: 5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x19000000),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 4),
+                                      ),
+                                    ],
+                                    color: Color.fromRGBO(142, 2, 2, 1),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                    top: 11,
+                                    bottom: 10,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "5,735",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 26,
+                                        fontFamily: "Ubuntu",
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 70,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(25.0),
+            topRight: Radius.circular(25.0),
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Track Case',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.medical_services),
+                label: 'Donation',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.assignment_ind),
+                label: 'My Card',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Color.fromRGBO(142, 2, 2, 0.6),
+            onTap: _onItemTapped,
+          ),
+        ),
+      ),
+    );
+  }
+}

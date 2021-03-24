@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569786017633",
+    "project_id": "wmc-project-2eb8a",
+    "storage_bucket": "wmc-project-2eb8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569786017633:android:e6d31eb4cf91a8b44d4720",
+        "android_client_info": {
+          "package_name": "com.example.term_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569786017633-n93l38dcqfsel8bfrj4fo23e0m14bb91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK4UcAb7oJjgc3_mAutyV2bo6B8z4bg0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569786017633-n93l38dcqfsel8bfrj4fo23e0m14bb91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
