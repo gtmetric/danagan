@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:term_project/pages/doctor/doctorhome.dart';
+import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart ';
 import 'package:term_project/shared/constants.dart';
 import 'package:term_project/shared/redloading.dart';
@@ -16,18 +18,24 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
+  bool returnLogo = false;
+  bool auth = false;
 
   // text field state
   final String type = 'Doctor';
   String email = '';
-  String password = '';String nid = '';
+  String password = '';
+  String nid = '';
   String firstName = '';
   String lastName = '';
   String hospital = '';
+  String phoneNumber = '';
   String error = '';
 
   @override
   Widget build(BuildContext context) {
+    if(returnLogo) return Logo();
+    if(auth) return DoctorHome();
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
@@ -105,25 +113,63 @@ class _RegisterState extends State<Register> {
                   },
                 ),
                 SizedBox(height: 20.0),
-                RaisedButton(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  color: Color.fromRGBO(142, 2, 2, 1),
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      setState(() {
-                        loading = true;
-                      });
-                      dynamic result = await _auth.signUpDoctor(email, password, type, firstName, lastName, nid, hospital);
-                      if (result == null) setState(() {
-                        error = 'Please, enter a valid email.';
-                        loading = false;
-                      });
-                    }
+                TextFormField(
+                  decoration: textInputDecoration.copyWith(hintText: 'Phone Number'),
+                  validator: (val) => val.isEmpty ? 'Enter your phone number.' : null,
+                  onChanged: (val) {
+                    phoneNumber = val;
                   },
+                ),
+                SizedBox(height: 20.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RaisedButton(
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      color: Color.fromRGBO(142, 2, 2, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'Go Back',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          returnLogo = true;
+                        });
+                      },
+                    ),
+                    SizedBox(width: 20),
+                    RaisedButton(
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      color: Color.fromRGBO(142, 2, 2, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          setState(() {
+                            loading = true;
+                          });
+                          dynamic result = await _auth.signUpDoctor(email,
+                              password, type, firstName, lastName, nid, hospital,
+                              phoneNumber);
+                          if (result == null) setState(() {
+                            error = 'Please, enter a valid email.';
+                            loading = false;
+                          });
+                          else setState(() {
+                            auth = true;
+                          });
+                        }
+                      },
+                    ),
+                  ],
                 ),
                 SizedBox(height: 12),
                 Text(error,

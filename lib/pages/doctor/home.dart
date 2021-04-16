@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:term_project/navbar.dart';
+import 'package:term_project/pages/doctor/trackcase.dart';
+import 'package:term_project/pages/doctor/donation.dart';
+import 'package:term_project/pages/doctor/mycard.dart';
+import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart';
 
-class DoctorHome extends StatefulWidget {
-  DoctorHome({Key key}) : super(key: key);
+class Home extends StatefulWidget {
+  Home({Key key}) : super(key: key);
 
   @override
-  _DoctorHomeState createState() => _DoctorHomeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _DoctorHomeState extends State<DoctorHome> {
-  NavBar myNavBar = NavBar();
+class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+  bool auth = true;
 
   int _selectedIndex = 0;
 
@@ -23,6 +26,10 @@ class _DoctorHomeState extends State<DoctorHome> {
 
   @override
   Widget build(BuildContext context) {
+    if(!auth) return Logo();
+    if(_selectedIndex==1) return TrackCase();
+    else if(_selectedIndex==2) return Donation();
+    else if(_selectedIndex==3) return MyCard();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
@@ -48,8 +55,8 @@ class _DoctorHomeState extends State<DoctorHome> {
                 borderRadius: BorderRadius.circular(50.0),
               ),
               onPressed: () async {
-                // _onItemTapped(2);
-                await _auth.signOut();
+                _onItemTapped(2);
+
               },
               textColor: Colors.white,
               padding: const EdgeInsets.all(0.0),

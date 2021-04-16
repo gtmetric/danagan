@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:term_project/pages/authenticate/doctor/authenticate.dart';
 import 'package:term_project/pages/authenticate/donor/authenticate.dart';
-import 'package:term_project/pages/wrapper.dart';
 
 class Logo extends StatefulWidget {
   @override

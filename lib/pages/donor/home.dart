@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:term_project/navbar.dart';
+import 'package:term_project/pages/donor/donation.dart';
+import 'package:term_project/pages/donor/knowledge.dart';
+import 'package:term_project/pages/donor/mycard.dart';
+import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart';
 
-class DonorHome extends StatefulWidget {
-  DonorHome({Key key}) : super(key: key);
-
+class Home extends StatefulWidget {
   @override
-  _DonorHomeState createState() => _DonorHomeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _DonorHomeState extends State<DonorHome> {
-  NavBar myNavBar = NavBar();
+class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+  bool auth = true;
 
   int _selectedIndex = 0;
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -23,9 +23,13 @@ class _DonorHomeState extends State<DonorHome> {
 
   @override
   Widget build(BuildContext context) {
+    // if(!auth) return Logo();
+    if(_selectedIndex==1) return Knowledge();
+    else if(_selectedIndex==2) return Donation();
+    else if(_selectedIndex==3) return MyCard();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
+        backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
         toolbarHeight: 25,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -48,8 +52,11 @@ class _DonorHomeState extends State<DonorHome> {
                 borderRadius: BorderRadius.circular(50.0),
               ),
               onPressed: () async {
-                // _onItemTapped(2);
-                await _auth.signOut();
+                _onItemTapped(2);
+                // await _auth.signOut();
+                // setState(() {
+                //   auth = false;
+                // });
               },
               textColor: Colors.white,
               padding: const EdgeInsets.all(0.0),
@@ -461,5 +468,6 @@ class _DonorHomeState extends State<DonorHome> {
         ),
       ),
     );
+
   }
 }

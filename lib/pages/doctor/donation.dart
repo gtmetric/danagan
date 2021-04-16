@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:term_project/pages/doctor/donation.dart';
 import 'package:term_project/pages/doctor/home.dart';
 import 'package:term_project/pages/doctor/mycard.dart';
+import 'package:term_project/pages/doctor/trackcase.dart';
 
-class TrackCase extends StatefulWidget {
+class Donation extends StatefulWidget {
   @override
-  _TrackCaseState createState() => _TrackCaseState();
+  _DonationState createState() => _DonationState();
 }
 
-class _TrackCaseState extends State<TrackCase> {
-  int _selectedIndex = 1;
+class _DonationState extends State<Donation> {
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -17,17 +17,11 @@ class _TrackCaseState extends State<TrackCase> {
     });
   }
 
-  // TODO: search case in Firestore
-
-  @override
-  Widget build(BuildContext context) {
-
-
-      if (_selectedIndex == 0)
-        return Home();
-      else if (_selectedIndex == 2)
-        return Donation();
-      else if (_selectedIndex == 3) return MyCard();
+    @override
+    Widget build(BuildContext context) {
+      if(_selectedIndex==0) return Home();
+      else if(_selectedIndex==1) return TrackCase();
+      else if(_selectedIndex==3) return MyCard();
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
@@ -39,7 +33,8 @@ class _TrackCaseState extends State<TrackCase> {
           ),
         ),
         body: Container(
-          child: Text('Track Case'),
+          // TODO: upload organ request to firestore
+          child: Text('Donation'),
         ),
         bottomNavigationBar: Container(
           height: 70,
@@ -78,4 +73,3 @@ class _TrackCaseState extends State<TrackCase> {
       );
     }
   }
-
