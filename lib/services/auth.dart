@@ -7,6 +7,12 @@ import 'package:term_project/services/file.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  Future<String> getUid() async {
+    final FirebaseUser user = await _auth.currentUser();
+    final uid = user.uid;
+    return uid;
+  }
+
   // create user object based on firebase user
   User _userFromFirebaseUser(FirebaseUser user) {
     String type = '';

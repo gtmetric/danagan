@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:term_project/pages/donor/home.dart';
 import 'package:term_project/pages/donor/knowledge.dart';
 import 'package:term_project/pages/donor/mycard.dart';
+import 'package:term_project/services/auth.dart';
+import 'package:term_project/services/database.dart';
 
 class Donation extends StatefulWidget {
   @override
@@ -9,11 +11,16 @@ class Donation extends StatefulWidget {
 }
 
 class _DonationState extends State<Donation> {
+  final AuthService _auth = AuthService();
+  String uid = '';
+
   List<String> donateOrgans = [];
   bool heart = false;
   bool liver = false;
   bool kidney = false;
   bool lung = false;
+
+  bool message = false;
 
   int _selectedIndex = 2;
   void _onItemTapped(int index) {
@@ -28,19 +35,19 @@ class _DonationState extends State<Donation> {
     else if(_selectedIndex==1) return Knowledge();
     else if(_selectedIndex==3) return MyCard();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
-        toolbarHeight: 25,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
+      //   toolbarHeight: 25,
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.vertical(
+      //       bottom: Radius.circular(25),
+      //     ),
+      //   ),
+      // ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 80),
+            SizedBox(height: 120),
             Text(
               'Donation Request',
               style: TextStyle(
@@ -131,7 +138,10 @@ class _DonationState extends State<Donation> {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               onPressed: () async {
-                // TODO: upload donation request to Firestore
+                uid = await _auth.getUid();
+                final DatabaseService _databaseService = DatabaseService(uid:uid);
+                await _databaseService.updateDonationRequest(donateOrgans);
+                showAlertDialog(context);
               },
             ),
           ],
@@ -173,4 +183,30 @@ class _DonationState extends State<Donation> {
       ),
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+
+  // set up the button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () { Navigator.of(context).pop(); },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Request Status"),
+    content: Text("You have successfully submitted your Donation Request."),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

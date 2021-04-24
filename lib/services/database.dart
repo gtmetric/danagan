@@ -20,8 +20,15 @@ class DatabaseService {
       'nid': nid,
       'dob': dob,
       'phoneNumber': phoneNumber,
-      'address': address
+      'address': address,
+      'status': 'N/A'
     });
+  }
+
+  Future<dynamic> getDonorData() async {
+    dynamic snapshot = await donorCollection.document(uid).get();
+    dynamic data = snapshot.data;
+    return data;
   }
 
   Future updateDoctorData(String type, String firstName, String lastName,
@@ -37,11 +44,9 @@ class DatabaseService {
   }
 
   Future updateDonationRequest(List<String> organs) async {
-    await donorCollection.document(uid).setData({
-      'status': 'Modified'
-    });
-    return await donationCollection.document(uid).setData({
-      'organs': [organs]
+    await donorCollection.document(uid).updateData({
+      'status': 'Submitted',
+      'organs': organs
     });
   }
 

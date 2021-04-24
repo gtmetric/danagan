@@ -4,6 +4,7 @@ import 'package:term_project/pages/donor/home.dart';
 import 'package:term_project/pages/donor/knowledge.dart';
 import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart';
+import 'package:term_project/services/database.dart';
 
 class MyCard extends StatefulWidget {
   @override
@@ -12,7 +13,14 @@ class MyCard extends StatefulWidget {
 
 class _MyCardState extends State<MyCard> {
   final AuthService _auth = AuthService();
+  String uid = '';
   bool auth = true;
+
+  String firstName = '';
+  String lastName = '';
+  String dob = '';
+  List<String> organs = [];
+  String status = '';
 
   int _selectedIndex = 3;
 
@@ -22,7 +30,25 @@ class _MyCardState extends State<MyCard> {
     });
   }
 
-  // TODO: access data from the database
+  void getDonorData() async {
+    uid = await _auth.getUid();
+    final DatabaseService _databaseService = DatabaseService(uid: uid);
+    dynamic data = await _databaseService.getDonorData();
+    // print(data);
+    setState(() {
+      firstName = data['firstName'];
+      lastName = data['lastName'];
+      dob = data['dob'];
+      organs = data['organs'].cast<String>();
+      status = data['status'];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDonorData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +57,19 @@ class _MyCardState extends State<MyCard> {
     else if (_selectedIndex == 1)return Knowledge();
     else if (_selectedIndex == 2) return Donation();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
-        toolbarHeight: 25,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(25),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
+      //   toolbarHeight: 25,
+      //   shape: RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.vertical(
+      //       bottom: Radius.circular(25),
+      //     ),
+      //   ),
+      // ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 80),
+            SizedBox(height: 120),
             Container(
               // margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(30),
@@ -62,13 +88,13 @@ class _MyCardState extends State<MyCard> {
                     ),
                   ),
                   Text(
-                    'Mr. Donor 1',
+                    firstName + ' ' + lastName,
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
                   Text(
-                    'Date of Birth: 19/10/1999',
+                    'Date of Birth: ' + dob,
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -82,7 +108,7 @@ class _MyCardState extends State<MyCard> {
                     ),
                   ),
                   Text(
-                    'Some organs',
+                    organs.join(', '),
                     style: TextStyle(
                       // fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -119,7 +145,7 @@ class _MyCardState extends State<MyCard> {
                 ],
                 color: Color(0xff192550),
               ),
-              child: Text('Donation Request Approved',
+              child: Text('Donation Request ' + status,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

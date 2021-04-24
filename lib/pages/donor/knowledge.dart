@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:term_project/pages/donor/donation.dart';
 import 'package:term_project/pages/donor/home.dart';
 import 'package:term_project/pages/donor/mycard.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Knowledge extends StatefulWidget {
   @override
@@ -22,19 +23,110 @@ class _KnowledgeState extends State<Knowledge> {
     else if(_selectedIndex==2) return Donation();
     else if(_selectedIndex==3) return MyCard();
     return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
-            toolbarHeight: 25,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(25),
+          // appBar: AppBar(
+          //   backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
+          //   toolbarHeight: 25,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.vertical(
+          //       bottom: Radius.circular(25),
+          //     ),
+          //   ),
+          // ),
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 40),
+                  Image(
+                    image: AssetImage('assets/icons/knowledge_icon.png'),
+                    width: 500,
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "Organ donation",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      "is the process when a person allows an organ of their own to be removed and transplanted to another person, legally, either by consent while the donor is alive or dead with the assent of the next of kin.",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "General Information about Organ Donation",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  YoutubePlayer(
+                    controller: YoutubePlayerController(
+                      initialVideoId: 'QHdPksngqVk', //Add videoID.
+                      flags: YoutubePlayerFlags(
+                        hideControls: false,
+                        controlsVisibleAtStart: true,
+                        autoPlay: false,
+                        mute: false,
+                      ),
+                    ),
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.red,
+                  ),
+                  SizedBox(height: 40),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "The Process of Organ Transplantation",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: "Ubuntu",
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                   YoutubePlayer(
+                    controller: YoutubePlayerController(
+                      initialVideoId: 'hCxywDtpIQI', //Add videoID.
+                      flags: YoutubePlayerFlags(
+                        hideControls: false,
+                        controlsVisibleAtStart: true,
+                        autoPlay: false,
+                        mute: false,
+                      ),
+                    ),
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.red,
+                  ),
+                  SizedBox(height: 40),
+                ],
               ),
-            ),
-          ),
-          body: Container(
-            child: Text(
-              // TODO: put dummy data here
-                'Knowledge'
             ),
           ),
           bottomNavigationBar: Container(
