@@ -37,400 +37,402 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image(
-              image: AssetImage('assets/icons/people_icon.png'),
-              width: 280,
-              height: 180,
-            ),
-            RaisedButton(
-              color: Color.fromRGBO(85, 190, 237, 0.6),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.0),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image(
+                image: AssetImage('assets/icons/people_icon.png'),
+                width: 280,
+                height: 180,
               ),
-              onPressed: () async {
-                _onItemTapped(2);
-                // await _auth.signOut();
-                // setState(() {
-                //   auth = false;
-                // });
-              },
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
-              child: Container(
-                padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
+              RaisedButton(
+                color: Color.fromRGBO(85, 190, 237, 0.6),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                onPressed: () async {
+                  _onItemTapped(2);
+                  // await _auth.signOut();
+                  // setState(() {
+                  //   auth = false;
+                  // });
+                },
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(0.0),
                 child: Container(
-                  width: 155,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('+ ',
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
+                  child: Container(
+                    width: 155,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('+ ',
+                            style: TextStyle(
+                                fontSize: 36, fontWeight: FontWeight.bold)),
+                        Text(
+                          "DONATE",
                           style: TextStyle(
-                              fontSize: 36, fontWeight: FontWeight.bold)),
-                      Text(
-                        "DONATE",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontFamily: "Ubuntu",
-                          fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontFamily: "Ubuntu",
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 140,
-                        height: 130,
-                        child: Container(
+              Container(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
                           width: 140,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
+                          height: 130,
+                          child: Container(
+                            width: 140,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Color(0xffd2d2d2),
+                                width: 5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x19000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                               color: Color(0xffd2d2d2),
-                              width: 5,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x19000000),
-                                blurRadius: 4,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            color: Color(0xffd2d2d2),
-                          ),
-                          padding: const EdgeInsets.only(
-                            top: 20,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "REGISTERED",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: "Ubuntu",
-                                  fontWeight: FontWeight.w700,
+                            padding: const EdgeInsets.only(
+                              top: 20,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "REGISTERED",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: "Ubuntu",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 19),
-                              Container(
-                                width: 140,
-                                height: 60,
-                                child: Container(
+                                SizedBox(height: 19),
+                                Container(
                                   width: 140,
-                                  height: 51,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: Color(0xff192550),
-                                      width: 5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x19000000),
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
+                                  height: 60,
+                                  child: Container(
+                                    width: 140,
+                                    height: 51,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Color(0xff192550),
+                                        width: 5,
                                       ),
-                                    ],
-                                    color: Color(0xff192550),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 11,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "126,440",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 26,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w700,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x19000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                        ),
+                                      ],
+                                      color: Color(0xff192550),
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 11,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "126,440",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 26,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 140,
-                        height: 130,
-                        child: Container(
+                        Container(
                           width: 140,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
+                          height: 130,
+                          child: Container(
+                            width: 140,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Color(0xffd2d2d2),
+                                width: 5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x19000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                               color: Color(0xffd2d2d2),
-                              width: 5,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x19000000),
-                                blurRadius: 4,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            color: Color(0xffd2d2d2),
-                          ),
-                          padding: const EdgeInsets.only(
-                            top: 20,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "DONATED",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: "Ubuntu",
-                                  fontWeight: FontWeight.w700,
+                            padding: const EdgeInsets.only(
+                              top: 20,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "DONATED",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: "Ubuntu",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 19),
-                              Container(
-                                width: 140,
-                                height: 60,
-                                child: Container(
+                                SizedBox(height: 19),
+                                Container(
                                   width: 140,
-                                  height: 51,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: Color(0xff192550),
-                                      width: 5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x19000000),
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
+                                  height: 60,
+                                  child: Container(
+                                    width: 140,
+                                    height: 51,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Color(0xff192550),
+                                        width: 5,
                                       ),
-                                    ],
-                                    color: Color(0xff192550),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 11,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "315",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 26,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w700,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x19000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                        ),
+                                      ],
+                                      color: Color(0xff192550),
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 11,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "315",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 26,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: 140,
-                        height: 130,
-                        child: Container(
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
                           width: 140,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
+                          height: 130,
+                          child: Container(
+                            width: 140,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Color(0xffd2d2d2),
+                                width: 5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x19000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                               color: Color(0xffd2d2d2),
-                              width: 5,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x19000000),
-                                blurRadius: 4,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            color: Color(0xffd2d2d2),
-                          ),
-                          padding: const EdgeInsets.only(
-                            top: 20,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "SAVED",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: "Ubuntu",
-                                  fontWeight: FontWeight.w700,
+                            padding: const EdgeInsets.only(
+                              top: 20,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "SAVED",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: "Ubuntu",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 19),
-                              Container(
-                                width: 140,
-                                height: 60,
-                                child: Container(
+                                SizedBox(height: 19),
+                                Container(
                                   width: 140,
-                                  height: 51,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: Color(0xff192550),
-                                      width: 5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x19000000),
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
+                                  height: 60,
+                                  child: Container(
+                                    width: 140,
+                                    height: 51,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Color(0xff192550),
+                                        width: 5,
                                       ),
-                                    ],
-                                    color: Color(0xff192550),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
-                                    bottom: 11,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "697",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 26,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w700,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x19000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                        ),
+                                      ],
+                                      color: Color(0xff192550),
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 11,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "697",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 26,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 140,
-                        height: 130,
-                        child: Container(
+                        Container(
                           width: 140,
-                          height: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(
+                          height: 130,
+                          child: Container(
+                            width: 140,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: Color(0xffd2d2d2),
+                                width: 5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x19000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
                               color: Color(0xffd2d2d2),
-                              width: 5,
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x19000000),
-                                blurRadius: 4,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                            color: Color(0xffd2d2d2),
-                          ),
-                          padding: const EdgeInsets.only(
-                            top: 12,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "WAITING FOR\nDONATION",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontFamily: "Ubuntu",
-                                  fontWeight: FontWeight.w700,
+                            padding: const EdgeInsets.only(
+                              top: 12,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "WAITING FOR\nDONATION",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: "Ubuntu",
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 6),
-                              Container(
-                                width: 140,
-                                height: 60,
-                                child: Container(
+                                SizedBox(height: 6),
+                                Container(
                                   width: 140,
-                                  height: 51,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(
-                                      color: Color(0xff192550),
-                                      width: 5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x19000000),
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
+                                  height: 60,
+                                  child: Container(
+                                    width: 140,
+                                    height: 51,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Color(0xff192550),
+                                        width: 5,
                                       ),
-                                    ],
-                                    color: Color(0xff192550),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                    top: 11,
-                                    bottom: 10,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "5,735",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 26,
-                                        fontFamily: "Ubuntu",
-                                        fontWeight: FontWeight.w700,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x19000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                        ),
+                                      ],
+                                      color: Color(0xff192550),
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      top: 11,
+                                      bottom: 10,
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "5,735",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 26,
+                                          fontFamily: "Ubuntu",
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Container(

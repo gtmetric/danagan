@@ -4,6 +4,7 @@ import 'package:term_project/pages/doctor/home.dart';
 import 'package:term_project/pages/doctor/trackcase.dart';
 import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart';
+import 'package:term_project/services/database.dart';
 
 class MyCard extends StatefulWidget {
   @override
@@ -14,6 +15,12 @@ class _MyCardState extends State<MyCard> {
   final AuthService _auth = AuthService();
   bool auth = true;
 
+  String uid = '';
+  String firstName = '';
+  String lastName = '';
+  String nid = '';
+  String hospital = '';
+
   int _selectedIndex = 3;
 
   void _onItemTapped(int index) {
@@ -22,7 +29,25 @@ class _MyCardState extends State<MyCard> {
     });
   }
 
-  // TODO: access data from firestore
+  void getDoctorData() async {
+    uid = await _auth.getUid();
+    print(uid);
+    final DatabaseService _databaseService = DatabaseService(uid: uid);
+    dynamic data = await _databaseService.getDoctorData();
+    print(data);
+    setState(() {
+      firstName = data['firstName'];
+      lastName = data['lastName'];
+      nid = data['nid'];
+      hospital = data['hospital'];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDoctorData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,79 +58,86 @@ class _MyCardState extends State<MyCard> {
         return TrackCase();
       else if (_selectedIndex == 2) return Donation();
       return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
-          toolbarHeight: 25,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25),
+        // appBar: AppBar(
+        //   backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
+        //   toolbarHeight: 25,
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.vertical(
+        //       bottom: Radius.circular(25),
+        //     ),
+        //   ),
+        // ),
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image(
+                  image: AssetImage('assets/icons/doctor_icon.png'),
+                  width: 600,
+                ),
+                SizedBox(height: 0),
+                Container(
+                  // margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(30),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Doctor Card',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      Text(
+                        firstName + ' ' + lastName,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        'National ID: ' + nid,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        hospital,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                RaisedButton(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  color: Color.fromRGBO(142, 2, 2, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    'Sign Out',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  onPressed: () async {
+                    await _auth.signOut();
+                    setState(() {
+                      auth = false;
+                    });
+                  },
+                ),
+                SizedBox(height: 60),
+              ],
             ),
-          ),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 80),
-              Container(
-                // margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(30),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 2),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Doctor Card',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),
-                    ),
-                    Text(
-                      'Mr. Doctor 1',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      'Date of Birth: 19/10/1999',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Bangkok Hospital',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: 80),
-              RaisedButton(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                color: Color.fromRGBO(142, 2, 2, 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  'Sign Out',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                onPressed: () async {
-                  await _auth.signOut();
-                  setState(() {
-                    auth = false;
-                  });
-                },
-              ),
-            ],
           ),
         ),
         bottomNavigationBar: Container(

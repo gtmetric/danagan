@@ -8,11 +8,29 @@ class DatabaseService {
   // collection reference
   final CollectionReference donorCollection = Firestore.instance.collection('donors');
   final CollectionReference doctorCollection = Firestore.instance.collection('doctors');
-  final CollectionReference donationCollection = Firestore.instance.collection('donation');
-  final CollectionReference requirementCollection = Firestore.instance.collection('requirement');
+  final CollectionReference requirementCollection = Firestore.instance.collection('requirements');
+
+  Future<dynamic> getDonorData() async {
+    dynamic snapshot = await donorCollection.document(uid).get();
+    dynamic data = snapshot.data;
+    return data;
+  }
+
+  Future<dynamic> getDoctorData() async {
+    dynamic snapshot = await doctorCollection.document(uid).get();
+    dynamic data = snapshot.data;
+    return data;
+  }
+
+  Future<dynamic> getRequirement(String nid) async {
+    dynamic snapshot = await requirementCollection.document(nid).get();
+    dynamic data = snapshot.data;
+    return data;
+  }
 
   Future updateDonorData(String type, String firstName, String lastName,
       String nid, String dob, String phoneNumber, String address) async {
+    List<String> organs = ['N/A'];
     return await donorCollection.document(uid).setData({
       'type': type,
       'firstName': firstName,
@@ -21,25 +39,35 @@ class DatabaseService {
       'dob': dob,
       'phoneNumber': phoneNumber,
       'address': address,
-      'status': 'N/A'
+      'status': 'N/A',
+      'organs': organs
     });
-  }
-
-  Future<dynamic> getDonorData() async {
-    dynamic snapshot = await donorCollection.document(uid).get();
-    dynamic data = snapshot.data;
-    return data;
   }
 
   Future updateDoctorData(String type, String firstName, String lastName,
       String nid, String hospital, String phoneNumber) async {
-    return await doctorCollection.document(uid).setData({
-      'type': type,
+    try {
+      return await doctorCollection.document(uid).setData({
+        'type': type,
+        'firstName': firstName,
+        'lastName': lastName,
+        'nid': nid,
+        'hospital': hospital,
+        'phoneNumber': phoneNumber
+      });
+    } catch(e) {
+      return e;
+    }
+  }
+
+  Future updateRequirement(String nid, String firstName, String lastName,
+      String desc) async {
+    return await requirementCollection.document(nid).setData({
+      'doctorId': uid,
       'firstName': firstName,
       'lastName': lastName,
-      'nid': nid,
-      'hospital': hospital,
-      'phoneNumber': phoneNumber
+      'description': desc,
+      'status': 'Submitted'
     });
   }
 

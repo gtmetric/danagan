@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:term_project/models/user.dart';
 import 'package:term_project/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:term_project/services/file.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -34,13 +33,10 @@ class AuthService {
 
   // sign in with email and password as a donor
   Future signInWithEmailAndPasswordDonor(String email, String password) async {
-    TempFile file = TempFile();
     String type = '';
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-      print(await file.writeID(user.uid));
-      print(await file.readID());
       final CollectionReference donorCollection = Firestore.instance.collection('donors');
       type = (await donorCollection.document(user.uid).get()).data['type'];
       User userModel = _userFromFirebaseUser(user);
@@ -54,13 +50,10 @@ class AuthService {
 
   // sign in with email and password as a doctor
   Future signInWithEmailAndPasswordDoctor(String email, String password) async {
-    TempFile file = TempFile();
     String type = '';
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-      print(await file.writeID(user.uid));
-      print(await file.readID());
       final CollectionReference donorCollection = Firestore.instance.collection('doctors');
       type = (await donorCollection.document(user.uid).get()).data['type'];
       User userModel = _userFromFirebaseUser(user);

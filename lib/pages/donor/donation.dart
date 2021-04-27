@@ -35,116 +35,111 @@ class _DonationState extends State<Donation> {
     else if(_selectedIndex==1) return Knowledge();
     else if(_selectedIndex==3) return MyCard();
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
-      //   toolbarHeight: 25,
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.vertical(
-      //       bottom: Radius.circular(25),
-      //     ),
-      //   ),
-      // ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 120),
-            Text(
-              'Donation Request',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-            SizedBox(height: 80),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Select the organ(s) you would like to donate:',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: 80),
+                Text(
+                  'Donation Request',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
                 ),
-              ),
+                SizedBox(height: 80),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Select the organ(s) you would like to donate:',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      CheckboxListTile(
+                        title: Text('Heart'),
+                        value: heart,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        onChanged: (bool val) {
+                          setState(() {
+                            if(val) donateOrgans.add('Heart');
+                            else donateOrgans.remove('Heart');
+                            heart = val;
+                            print(donateOrgans);
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('Liver'),
+                        value: liver,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        onChanged: (bool val) {
+                          setState(() {
+                            if(val) donateOrgans.add('Liver');
+                            else donateOrgans.remove('Liver');
+                            liver = val;
+                            print(donateOrgans);
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('Kidney'),
+                        value: kidney,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        onChanged: (bool val) {
+                          setState(() {
+                            if(val) donateOrgans.add('Kidney');
+                            else donateOrgans.remove('Kidney');
+                            kidney = val;
+                            print(donateOrgans);
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('Lung'),
+                        value: lung,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        onChanged: (bool val) {
+                          setState(() {
+                            if(val) donateOrgans.add('Lung');
+                            else donateOrgans.remove('Lung');
+                            lung = val;
+                            print(donateOrgans);
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 50),
+                RaisedButton(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  color: Color(0xff192550),
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  onPressed: () async {
+                    uid = await _auth.getUid();
+                    final DatabaseService _databaseService = DatabaseService(uid:uid);
+                    await _databaseService.updateDonationRequest(donateOrgans);
+                    showAlertDialog(context);
+                  },
+                ),
+              ],
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  CheckboxListTile(
-                    title: Text('Heart'),
-                    value: heart,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (bool val) {
-                      setState(() {
-                        if(val) donateOrgans.add('Heart');
-                        else donateOrgans.remove('Heart');
-                        heart = val;
-                        print(donateOrgans);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Liver'),
-                    value: liver,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (bool val) {
-                      setState(() {
-                        if(val) donateOrgans.add('Liver');
-                        else donateOrgans.remove('Liver');
-                        liver = val;
-                        print(donateOrgans);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Kidney'),
-                    value: kidney,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (bool val) {
-                      setState(() {
-                        if(val) donateOrgans.add('Kidney');
-                        else donateOrgans.remove('Kidney');
-                        kidney = val;
-                        print(donateOrgans);
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Lung'),
-                    value: lung,
-                    controlAffinity: ListTileControlAffinity.leading,
-                    onChanged: (bool val) {
-                      setState(() {
-                        if(val) donateOrgans.add('Lung');
-                        else donateOrgans.remove('Lung');
-                        lung = val;
-                        print(donateOrgans);
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 50),
-            RaisedButton(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Color(0xff192550),
-              child: Text(
-                'Submit',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-              onPressed: () async {
-                uid = await _auth.getUid();
-                final DatabaseService _databaseService = DatabaseService(uid:uid);
-                await _databaseService.updateDonationRequest(donateOrgans);
-                showAlertDialog(context);
-              },
-            ),
-          ],
+          ),
         ),
       ),
       bottomNavigationBar: Container(

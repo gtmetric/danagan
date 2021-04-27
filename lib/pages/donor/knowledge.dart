@@ -32,100 +32,101 @@ class _KnowledgeState extends State<Knowledge> {
           //     ),
           //   ),
           // ),
-          body: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  SizedBox(height: 40),
-                  Image(
-                    image: AssetImage('assets/icons/knowledge_icon.png'),
-                    width: 500,
-                  ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Text(
-                      "Organ donation",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontFamily: "Ubuntu",
-                        fontWeight: FontWeight.w700,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    Image(
+                      image: AssetImage('assets/icons/knowledge_icon.png'),
+                      width: 500,
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "Organ donation",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontFamily: "Ubuntu",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      "is the process when a person allows an organ of their own to be removed and transplanted to another person, legally, either by consent while the donor is alive or dead with the assent of the next of kin.",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontFamily: "Ubuntu",
-                        fontWeight: FontWeight.w400,
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        "is the process when a person allows an organ of their own to be removed and transplanted to another person, legally, either by consent while the donor is alive or dead with the assent of the next of kin.",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontFamily: "Ubuntu",
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Text(
-                      "General Information about Organ Donation",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: "Ubuntu",
-                        fontWeight: FontWeight.w700,
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "General Information about Organ Donation",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: "Ubuntu",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 15),
-                  YoutubePlayer(
-                    controller: YoutubePlayerController(
-                      initialVideoId: 'QHdPksngqVk', //Add videoID.
-                      flags: YoutubePlayerFlags(
-                        hideControls: false,
-                        controlsVisibleAtStart: true,
-                        autoPlay: false,
-                        mute: false,
+                    SizedBox(height: 15),
+                    YoutubePlayer(
+                      controller: YoutubePlayerController(
+                        initialVideoId: 'QHdPksngqVk', //Add videoID.
+                        flags: YoutubePlayerFlags(
+                          hideControls: false,
+                          controlsVisibleAtStart: true,
+                          autoPlay: false,
+                          mute: false,
+                        ),
+                      ),
+                      showVideoProgressIndicator: true,
+                      progressIndicatorColor: Colors.red,
+                    ),
+                    SizedBox(height: 40),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        "The Process of Organ Transplantation",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: "Ubuntu",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                    showVideoProgressIndicator: true,
-                    progressIndicatorColor: Colors.red,
-                  ),
-                  SizedBox(height: 40),
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                    child: Text(
-                      "The Process of Organ Transplantation",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: "Ubuntu",
-                        fontWeight: FontWeight.w700,
+                    SizedBox(height: 15),
+                     YoutubePlayer(
+                      controller: YoutubePlayerController(
+                        initialVideoId: 'hCxywDtpIQI', //Add videoID.
+                        flags: YoutubePlayerFlags(
+                          hideControls: false,
+                          controlsVisibleAtStart: true,
+                          autoPlay: false,
+                          mute: false,
+                        ),
                       ),
+                      showVideoProgressIndicator: true,
+                      progressIndicatorColor: Colors.red,
                     ),
-                  ),
-                  SizedBox(height: 15),
-                   YoutubePlayer(
-                    controller: YoutubePlayerController(
-                      initialVideoId: 'hCxywDtpIQI', //Add videoID.
-                      flags: YoutubePlayerFlags(
-                        hideControls: false,
-                        controlsVisibleAtStart: true,
-                        autoPlay: false,
-                        mute: false,
-                      ),
-                    ),
-                    showVideoProgressIndicator: true,
-                    progressIndicatorColor: Colors.red,
-                  ),
-                  SizedBox(height: 40),
-                ],
+                    SizedBox(height: 40),
+                  ],
+                ),
               ),
             ),
           ),
