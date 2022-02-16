@@ -1,16 +1,11 @@
-# term_project
+# Term Project
 
-A new Flutter project.
+![1](https://user-images.githubusercontent.com/48952397/154294363-0b0f8152-2dcc-4bef-ba6a-c2167255879d.png)
 
-## Getting Started
+![2](https://user-images.githubusercontent.com/48952397/154294394-6ff3c663-c6d2-4855-9bc4-d8eae81e55ea.png)
 
-This project is a starting point for a Flutter application.
+![3](https://user-images.githubusercontent.com/48952397/154294402-04750eec-3b10-42db-b941-8c158f037911.png)
 
-A few resources to get you started if this is your first Flutter project:
+![4](https://user-images.githubusercontent.com/48952397/154294413-8df5a74d-bcff-4ac2-8bc8-90e78c50e14c.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![5](https://user-images.githubusercontent.com/48952397/154294431-f3fe1525-070e-4200-833d-084f575ace9b.png)
