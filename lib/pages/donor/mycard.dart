@@ -102,7 +102,6 @@ class _MyCardState extends State<MyCard> {
                     Text(
                       organs.join(', '),
                       style: TextStyle(
-                        // fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),

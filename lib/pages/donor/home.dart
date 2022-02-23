@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
   bool auth = true;
 
   int _selectedIndex = 0;
@@ -23,7 +22,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // if(!auth) return Logo();
     if(_selectedIndex==1) return Knowledge();
     else if(_selectedIndex==2) return Donation();
     else if(_selectedIndex==3) return MyCard();
@@ -54,10 +52,6 @@ class _HomeState extends State<Home> {
                 ),
                 onPressed: () async {
                   _onItemTapped(2);
-                  // await _auth.signOut();
-                  // setState(() {
-                  //   auth = false;
-                  // });
                 },
                 textColor: Colors.white,
                 padding: const EdgeInsets.all(0.0),

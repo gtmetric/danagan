@@ -23,15 +23,6 @@ class _KnowledgeState extends State<Knowledge> {
     else if(_selectedIndex==2) return Donation();
     else if(_selectedIndex==3) return MyCard();
     return Scaffold(
-          // appBar: AppBar(
-          //   backgroundColor: Color.fromRGBO(85, 190, 237, 0.6),
-          //   toolbarHeight: 25,
-          //   shape: RoundedRectangleBorder(
-          //     borderRadius: BorderRadius.vertical(
-          //       bottom: Radius.circular(25),
-          //     ),
-          //   ),
-          // ),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Center(

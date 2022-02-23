@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:term_project/models/user.dart';
 import 'package:term_project/pages/donor/donorhome.dart';
 import 'package:term_project/pages/logo.dart';
 import 'package:term_project/services/auth.dart';
@@ -22,7 +21,6 @@ class _SignInState extends State<SignIn> {
   bool auth = false;
   bool returnLogo = false;
 
-  // text field state
   String email;
   String password;
   String error = '';

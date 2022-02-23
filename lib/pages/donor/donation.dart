@@ -22,6 +22,28 @@ class _DonationState extends State<Donation> {
 
   bool message = false;
 
+  void showAlertDialog(BuildContext context) {
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () { Navigator.of(context).pop(); },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Request Status"),
+      content: Text("You have successfully submitted your Donation Request."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   int _selectedIndex = 2;
   void _onItemTapped(int index) {
     setState(() {
@@ -178,30 +200,4 @@ class _DonationState extends State<Donation> {
       ),
     );
   }
-}
-
-showAlertDialog(BuildContext context) {
-
-  // set up the button
-  Widget okButton = FlatButton(
-    child: Text("OK"),
-    onPressed: () { Navigator.of(context).pop(); },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Request Status"),
-    content: Text("You have successfully submitted your Donation Request."),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
 }

@@ -22,8 +22,29 @@ class _DonationState extends State<Donation> {
   String desc = '';
   String error = '';
 
-  int _selectedIndex = 2;
+  void showAlertDialog(BuildContext context) {
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () { Navigator.of(context).pop(); },
+    );
 
+    AlertDialog alert = AlertDialog(
+      title: Text("Request Status"),
+      content: Text("You have successfully submitted your Organ Requirement."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  int _selectedIndex = 2;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -36,15 +57,6 @@ class _DonationState extends State<Donation> {
       else if(_selectedIndex==1) return TrackCase();
       else if(_selectedIndex==3) return MyCard();
       return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
-        //   toolbarHeight: 25,
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.vertical(
-        //       bottom: Radius.circular(25),
-        //     ),
-        //   ),
-        // ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Center(
@@ -187,29 +199,3 @@ class _DonationState extends State<Donation> {
       );
     }
   }
-
-showAlertDialog(BuildContext context) {
-
-  // set up the button
-  Widget okButton = FlatButton(
-    child: Text("OK"),
-    onPressed: () { Navigator.of(context).pop(); },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Request Status"),
-    content: Text("You have successfully submitted your Organ Requirement."),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}

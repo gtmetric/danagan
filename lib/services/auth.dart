@@ -12,7 +12,6 @@ class AuthService {
     return uid;
   }
 
-  // create user object based on firebase user
   User _userFromFirebaseUser(FirebaseUser user) {
     String type = '';
 
@@ -26,12 +25,10 @@ class AuthService {
     else return null;
   }
 
-  // auth change user stream
   Stream<User> get user {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-  // sign in with email and password as a donor
   Future signInWithEmailAndPasswordDonor(String email, String password) async {
     String type = '';
     try {
@@ -48,7 +45,6 @@ class AuthService {
     }
   }
 
-  // sign in with email and password as a doctor
   Future signInWithEmailAndPasswordDoctor(String email, String password) async {
     String type = '';
     try {
@@ -65,7 +61,6 @@ class AuthService {
     }
   }
 
-  // sign up with email and password
   Future signUpDonor(String email, String password, String type,
       String firstName, String lastName, String nid, String dob,
       String phoneNumber, String address) async {
@@ -73,7 +68,6 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
 
-      // create a new document for the user with the uid
       await DatabaseService(uid: user.uid).updateDonorData(type, firstName, lastName, nid, dob, phoneNumber, address);
 
       return _userFromFirebaseUser(user);
@@ -90,7 +84,6 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
 
-      // create a new document for the user with the uid
       await DatabaseService(uid: user.uid).updateDoctorData(type, firstName, lastName, nid, hospital, phoneNumber);
 
       return _userFromFirebaseUser(user);
@@ -100,7 +93,6 @@ class AuthService {
     }
   }
 
-  // sign out
   Future signOut() async {
     try{
       return await _auth.signOut();

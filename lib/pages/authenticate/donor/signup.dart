@@ -21,7 +21,6 @@ class _RegisterState extends State<Register> {
   bool auth = false;
   bool returnLogo = false;
 
-  // text field state
   final String type = 'Donor';
   String email = '';
   String password = '';

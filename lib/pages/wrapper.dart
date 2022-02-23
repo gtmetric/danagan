@@ -16,7 +16,6 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context, listen: false);
-    // if(user!=null) print(user.type);
     bool isDonor = false;
 
     // Return either Donor, Doctor, or Logo
@@ -27,16 +26,12 @@ class _WrapperState extends State<Wrapper> {
         setState(() {
           isDonor = val.data!=null;
         });
-        // print(val.data);
       });
-
-      // print(isDonor);
 
       if(isDonor) return DonorHome();
       else if(!isDonor) return DoctorHome();
     }
-    // if(user.type=='Donor') return DonorHome();
-    // else return DoctorHome();
+
     return Loading();
   }
 }

@@ -58,15 +58,6 @@ class _MyCardState extends State<MyCard> {
         return TrackCase();
       else if (_selectedIndex == 2) return Donation();
       return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Color.fromRGBO(240, 136, 136, 0.8),
-        //   toolbarHeight: 25,
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.vertical(
-        //       bottom: Radius.circular(25),
-        //     ),
-        //   ),
-        // ),
         body: SafeArea(
           child: Center(
             child: Column(
@@ -177,4 +168,3 @@ class _MyCardState extends State<MyCard> {
       );
     }
   }
-

@@ -21,7 +21,6 @@ class _SignInState extends State<SignIn> {
   bool returnLogo = false;
   bool auth = false;
 
-  // text field state
   String email;
   String password;
   String error = '';

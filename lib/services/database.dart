@@ -5,7 +5,6 @@ class DatabaseService {
   final String uid;
   DatabaseService({ this.uid });
 
-  // collection reference
   final CollectionReference donorCollection = Firestore.instance.collection('donors');
   final CollectionReference doctorCollection = Firestore.instance.collection('doctors');
   final CollectionReference requirementCollection = Firestore.instance.collection('requirements');
@@ -84,7 +83,6 @@ class DatabaseService {
     }).toList();
   }
 
-  // get user stream
   Stream<List<User>> get donors {
     return donorCollection.snapshots()
       .map(_userFromSnapshot);

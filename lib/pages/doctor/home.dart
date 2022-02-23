@@ -3,7 +3,6 @@ import 'package:term_project/pages/doctor/trackcase.dart';
 import 'package:term_project/pages/doctor/donation.dart';
 import 'package:term_project/pages/doctor/mycard.dart';
 import 'package:term_project/pages/logo.dart';
-import 'package:term_project/services/auth.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -13,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
   bool auth = true;
 
   int _selectedIndex = 0;
@@ -57,7 +55,6 @@ class _HomeState extends State<Home> {
                 ),
                 onPressed: () async {
                   _onItemTapped(2);
-
                 },
                 textColor: Colors.white,
                 padding: const EdgeInsets.all(0.0),
@@ -71,7 +68,10 @@ class _HomeState extends State<Home> {
                       children: [
                         Text('+ ',
                             style: TextStyle(
-                                fontSize: 36, fontWeight: FontWeight.bold)),
+                                fontSize: 36,
+                                fontWeight: FontWeight.bold,
+                            )
+                        ),
                         Text(
                           "REQUEST",
                           style: TextStyle(
